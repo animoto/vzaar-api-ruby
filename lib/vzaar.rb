@@ -23,7 +23,7 @@ require 'httpclient'
 require 'nokogiri'
 require 'oauth'
 
-require 'vzaar/response/base'
+require 'vzaar/response/xml'
 require 'vzaar/connection'
 require 'vzaar/account_type'
 require 'vzaar/vzaar_error'

@@ -1,5 +1,5 @@
 module Vzaar
-  class AccountType < Response::Base
+  class AccountType < Response::XML
 
     attr_reader :version, :account_id, :title, :monthly, :currency,
       :bandwidth, :borderless, :search_enhancer

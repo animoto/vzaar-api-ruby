@@ -1,5 +1,5 @@
 module Vzaar
-  class WhoAmI < Response::Base
+  class WhoAmI < Response::XML
 
     attr_reader :login
 

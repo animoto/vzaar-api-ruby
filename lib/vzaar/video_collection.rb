@@ -1,5 +1,5 @@
 module Vzaar
-  class VideoCollection < Response::Base
+  class VideoCollection < Response::XML
 
     attr_reader :version
 

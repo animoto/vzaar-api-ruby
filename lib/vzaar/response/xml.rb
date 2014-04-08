@@ -1,6 +1,6 @@
 module Vzaar
   module Response
-    class Base
+    class XML
 
       attr_reader :xml
 

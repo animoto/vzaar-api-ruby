@@ -1,5 +1,5 @@
 module Vzaar
-  class VideoDetails < Response::Base
+  class VideoDetails < Response::XML
 
     attr_reader :id, :type, :version, :title, :description, :author_name,
       :author_url, :author_account, :provider_name, :provider_url,

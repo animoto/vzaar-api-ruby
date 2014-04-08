@@ -1,5 +1,5 @@
 module Vzaar
-  class Signature < Response::Base
+  class Signature < Response::XML
 
     attr_reader :https, :signature, :expirationdate, :acl,
       :success_action_redirect, :profile, :accesskeyid,

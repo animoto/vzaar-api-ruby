@@ -1,5 +1,5 @@
 module Vzaar
-  class User < Response::Base
+  class User < Response::XML
 
     attr_reader :version, :author_id, :author_name, :author_url,
       :author_account, :author_account_title, :created_at,

@@ -30,8 +30,8 @@ module Vzaar
 
     def video_details(video_id, opts={})
       url = "/api/videos/#{video_id}.xml"
-      connection.using_connection(url, opts) do |xml|
-        return VideoDetails.new(video_id, xml)
+      connection.using_connection(url, opts) do |body|
+        return VideoDetails.new(video_id, body)
       end
     end
 
