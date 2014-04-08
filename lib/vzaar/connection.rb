@@ -12,18 +12,18 @@ module Vzaar
       @login = options[:login]
     end
 
-    def using_authorised_connection(http_verb, url, data = nil, &block)
-      using_connection(true, http_verb, url, data, &block)
+    def using_authorised_connection(url, opts={}, &block)
+      using_connection(url, opts.merge(authenticated: true), &block)
     end
 
-    def using_public_connection(http_verb, url, &block)
-      using_connection(false, http_verb, url, &block)
+    def using_public_connection(url, opts={}, &block)
+      using_connection(url, opts, &block)
     end
 
-    def using_connection(authorised, http_verb, url, data = nil, &block)
-      connection = authorised ? authorised_connection : public_connection
+    def using_connection(url, opts={ authenticated: false }, &block)
+      connection = opts[:authenticated] ? authorised_connection : public_connection
       response = nil
-      case http_verb
+      case opts[:http_verb] || Http::GET
       when Http::GET
         response = connection.get(url)
         yield handle_response(response) if block_given?
@@ -31,10 +31,10 @@ module Vzaar
         response = connection.delete(url)
         handle_response(response)
       when Http::POST
-        response = connection.post url, data, { 'Content-Type' => 'application/xml' }
+        response = connection.post(url, opts[:data], content_type(opts[:format]))
         yield handle_response(response) if block_given?
       when Http::PUT
-        response = connection.put url, data, { 'Content-Type' => 'application/xml' }
+        response = connection.put(url, opts[:data], content_type(opts[:format]))
         handle_response(response)
       else
         handle_exception :invalid_http_verb
@@ -48,8 +48,11 @@ module Vzaar
 
     private
 
+    def content_type(_type='xml')
+      { 'Content-Type' => 'application/#{_type}' }
+    end
+
     def sanitized_url
-      binding.pry
       @sanitized_url ||= options[:server].gsub(/(http|https)\:\/\//, "") if options[:server]
     end
 
