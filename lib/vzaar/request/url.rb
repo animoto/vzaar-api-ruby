@@ -12,7 +12,7 @@ module Vzaar
       end
 
       def build
-        base_url = url + "#.{format}"
+        base_url = url + ".#{format.to_s}"
 
         _params = build_params
         _params.blank? ? base_url : (base_url + "?" + _params)
