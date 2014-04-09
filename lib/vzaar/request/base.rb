@@ -38,25 +38,26 @@ module Vzaar
         format
       end
 
-      def user_options
-        { format: format, authenticated: authenticated?, http_verb: http_verb }
-      end
-
       def authenticated?
         options[:authenticated]
       end
 
-      def http_verb
-        Http::GET
-      end
-
-      def url_params
-        {}
-      end
-
       def url
-        @url ||= Url.new(base_url, format_suffix, url_params).build
+        Url.new(base_url, format_suffix, url_params).build
       end
+
+      def user_options
+        { format: format,
+          authenticated: authenticated?,
+          http_verb: http_verb,
+          data: data
+        }
+      end
+
+      def http_verb; Http::GET end
+      def url_params; {} end
+      def data; end
+
     end
   end
 end

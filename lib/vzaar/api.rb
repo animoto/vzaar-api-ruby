@@ -36,12 +36,8 @@ module Vzaar
       Request::DeleteVideo.new(connection, opts.merge(video_id: video_id)).execute
     end
 
-    def edit_video(video_id, options = {})
-      url = "/api/videos/#{video_id}.xml"
-      request = Request::EditVideo.new(options)
-      params = { http_verb: Http::PUT, data: request.xml, authenticated: true }
-
-      connection.using_connection(url, params)
+    def edit_video(video_id, opts={})
+      Request::EditVideo.new(connection, opts.merge(video_id: video_id)).execute
     end
 
     def signature(options = {})
