@@ -25,8 +25,12 @@ module Vzaar
         { format: options[:format] }
       end
 
+      def url_params
+        {}
+      end
+
       def url
-        @url ||= Url.new(base_url, format_suffix, options[:params]).build
+        @url ||= Url.new(base_url, format_suffix, url_params).build
       end
     end
   end
