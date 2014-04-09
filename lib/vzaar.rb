@@ -28,7 +28,6 @@ require 'vzaar/connection'
 
 require 'vzaar/vzaar_error'
 require 'vzaar/http'
-require 'vzaar/user'
 require 'vzaar/video'
 require 'vzaar/video_details'
 require 'vzaar/video_collection'
@@ -39,9 +38,11 @@ require 'vzaar/request/base'
 
 require 'vzaar/request/who_am_i'
 require 'vzaar/request/account_type'
+require 'vzaar/request/user_details'
 
 require 'vzaar/response/who_am_i'
 require 'vzaar/response/account_type'
+require 'vzaar/response/user_details'
 
 require 'vzaar/api'
 require 'vzaar/request/edit_video'

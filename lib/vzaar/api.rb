@@ -17,10 +17,7 @@ module Vzaar
     end
 
     def user_details(login, opts={})
-      url = "/api/users/#{login}.xml"
-      connection.using_connection(url, opts) do |xml|
-        return User.new(xml)
-      end
+      Request::UserDetails.new(connection, opts.merge(login: login)).send
     end
 
     def video_details(video_id, opts={})

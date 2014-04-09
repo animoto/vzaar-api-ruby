@@ -1,20 +1,22 @@
-module Vzaar::Request
-  class WhoAmI < Base
+module Vzaar
+  module Request
+    class WhoAmI < Base
 
-    def send
-      conn.using_authorised_connection(url) do |xml|
-        return Response::WhoAmI.new(xml).login
+      def send
+        conn.using_authorised_connection(url) do |xml|
+          return Response::WhoAmI.new(xml).login
+        end
       end
-    end
 
-    private
+      private
 
-    def base_url
-      '/api/test/whoami'
-    end
+      def base_url
+        '/api/test/whoami'
+      end
 
-    def format_suffix
-      nil
+      def format_suffix
+        nil
+      end
     end
   end
 end
