@@ -8,7 +8,6 @@ module Vzaar
   end
 
   refine Hash do
-
     def symb_keys
       h = {}
       self.each_pair do |k,v|
@@ -29,7 +28,6 @@ require 'vzaar/connection'
 require 'vzaar/vzaar_error'
 require 'vzaar/http'
 require 'vzaar/video'
-require 'vzaar/video_details'
 require 'vzaar/video_collection'
 require 'vzaar/signature'
 require 'vzaar/process_video'
@@ -39,10 +37,12 @@ require 'vzaar/request/base'
 require 'vzaar/request/who_am_i'
 require 'vzaar/request/account_type'
 require 'vzaar/request/user_details'
+require 'vzaar/request/video_details'
 
 require 'vzaar/response/who_am_i'
 require 'vzaar/response/account_type'
 require 'vzaar/response/user_details'
+require 'vzaar/response/video_details'
 
 require 'vzaar/api'
 require 'vzaar/request/edit_video'

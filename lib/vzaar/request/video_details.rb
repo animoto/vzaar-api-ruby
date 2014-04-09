@@ -1,9 +1,9 @@
 module Vzaar
   module Request
-    class UserDetails < Base
+    class VideoDetails < Base
       def send
-        conn.using_connection(url, user_options) do |xml|
-          return Response::UserDetails.new(xml)
+        conn.using_connection(url, opts) do |body|
+          return Response::VideoDetails.new(video_id, body)
         end
       end
 
@@ -14,11 +14,11 @@ module Vzaar
       end
 
       def base_url
-        "/api/users/#{login}"
+        "/api/videos/#{video_id}"
       end
 
-      def login
-        options[:login]
+      def video_id
+        options[:video_id]
       end
     end
   end

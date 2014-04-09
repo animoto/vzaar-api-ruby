@@ -21,10 +21,7 @@ module Vzaar
     end
 
     def video_details(video_id, opts={})
-      url = "/api/videos/#{video_id}.xml"
-      connection.using_connection(url, opts) do |body|
-        return VideoDetails.new(video_id, body)
-      end
+      Request::VideoDetails.new(connection, opts.merge(video_id: video_id)).send
     end
 
     def video_list(login, opts={})
