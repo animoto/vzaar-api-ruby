@@ -2,7 +2,7 @@ module Vzaar
   module Request
     class WhoAmI < Base
 
-      def send
+      def execute
         conn.using_authorised_connection(url) do |xml|
           return Response::WhoAmI.new(xml).login
         end

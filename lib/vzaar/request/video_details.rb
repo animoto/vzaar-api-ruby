@@ -1,7 +1,7 @@
 module Vzaar
   module Request
     class VideoDetails < Base
-      def send
+      def execute
         conn.using_connection(url, opts) do |body|
           return Response::VideoDetails.new(video_id, body)
         end

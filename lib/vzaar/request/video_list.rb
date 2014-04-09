@@ -1,7 +1,7 @@
 module Vzaar
   module Request
     class VideoList < Base
-      def send
+      def execute
         conn.using_connection(url, opts) do |body|
           return Response::VideoList.new(body)
         end

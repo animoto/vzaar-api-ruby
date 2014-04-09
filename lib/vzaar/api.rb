@@ -8,24 +8,24 @@ module Vzaar
     end
 
     def whoami(opts={})
-      Request::WhoAmI.new(connection, opts).send
+      Request::WhoAmI.new(connection, opts).execute
     end
 
     def account_type(account_type_id, opts={})
       _opts = opts.merge(account_type_id: account_type_id)
-      Request::AccountType.new(connection, _opts).send
+      Request::AccountType.new(connection, _opts).execute
     end
 
     def user_details(login, opts={})
-      Request::UserDetails.new(connection, opts.merge(login: login)).send
+      Request::UserDetails.new(connection, opts.merge(login: login)).execute
     end
 
     def video_details(video_id, opts={})
-      Request::VideoDetails.new(connection, opts.merge(video_id: video_id)).send
+      Request::VideoDetails.new(connection, opts.merge(video_id: video_id)).execute
     end
 
     def video_list(login, opts={})
-      Request::VideoList.new(connection, opts.merge(login: login)).send
+      Request::VideoList.new(connection, opts.merge(login: login)).execute
     end
 
     def videos(opts={})

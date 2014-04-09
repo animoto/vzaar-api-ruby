@@ -1,7 +1,7 @@
 module Vzaar
   module Request
     class AccountType < Base
-      def send
+      def execute
         conn.using_public_connection(url) do |xml|
           return Response::AccountType.new(xml)
         end
