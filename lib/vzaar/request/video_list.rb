@@ -1,17 +1,8 @@
 module Vzaar
   module Request
     class VideoList < Base
-      def execute
-        conn.using_connection(url, opts) do |body|
-          return Response::VideoList.new(body)
-        end
-      end
 
       private
-
-      def user_options
-        super.merge authenticated: options[:authenticated]
-      end
 
       def base_url
         "/api/#{login}/videos"

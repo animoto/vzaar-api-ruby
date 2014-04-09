@@ -19,13 +19,12 @@ module Vzaar::Response
         XML
       end
 
-      its(:login) { should eq(login) }
+      its(:body) { should eq(login) }
     end
 
     context "when xml is nil" do
       let(:xml) { nil }
-
-      its(:login) { should be_empty }
+      its(:body) { should be_empty }
     end
 
   end

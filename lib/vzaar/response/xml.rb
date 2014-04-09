@@ -9,6 +9,10 @@ module Vzaar
         @doc = Nokogiri::XML(xml)
       end
 
+      def body
+        self
+      end
+
       private
 
       attr_reader :doc

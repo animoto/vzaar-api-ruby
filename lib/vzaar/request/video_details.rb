@@ -2,7 +2,7 @@ module Vzaar
   module Request
     class VideoDetails < Base
       def execute
-        conn.using_connection(url, opts) do |body|
+        conn.using_connection(url, user_options) do |body|
           return Response::VideoDetails.new(video_id, body)
         end
       end

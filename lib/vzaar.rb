@@ -32,12 +32,15 @@ require 'vzaar/process_video'
 require 'vzaar/s3_uploader'
 require 'vzaar/request/base'
 
+# request
 require 'vzaar/request/who_am_i'
 require 'vzaar/request/account_type'
 require 'vzaar/request/user_details'
 require 'vzaar/request/video_details'
 require 'vzaar/request/video_list'
+require 'vzaar/request/delete_video'
 
+# response
 require 'vzaar/response/who_am_i'
 require 'vzaar/response/account_type'
 require 'vzaar/response/user_details'

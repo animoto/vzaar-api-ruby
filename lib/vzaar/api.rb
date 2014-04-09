@@ -33,22 +33,21 @@ module Vzaar
     end
 
     def delete_video(video_id, opts={})
-      url = "/api/videos/#{video_id}.xml"
-      connection.using_authorised_connection(url, http_verb: Http::DELETE)
+      Request::DeleteVideo.new(connection, opts.merge(video_id: video_id)).execute
     end
 
     def edit_video(video_id, options = {})
       url = "/api/videos/#{video_id}.xml"
       request = Request::EditVideo.new(options)
-      params = { http_verb: Http::PUT, data: request.xml }
+      params = { http_verb: Http::PUT, data: request.xml, authenticated: true }
 
-      connection.using_authorised_connection(url, params)
+      connection.using_connection(url, params)
     end
 
     def signature(options = {})
       request = Request::Signature.new('/api/videos/signature', options)
-      connection.using_authorised_connection(request.url) do |xml|
-        return Signature.new xml
+      connection.using_connection(request.url, authenticated: true, http_verb: Http::GET) do |xml|
+        return Signature.new(xml)
       end
     end
 
@@ -64,9 +63,9 @@ module Vzaar
     def process_video(options = {})
       url = '/api/videos'
       request = Request::ProcessVideo.new(options)
-      params = { http_verb: Http::POST, data: request.xml }
+      params = { http_verb: Http::POST, data: request.xml, authenticated: true }
 
-      connection.using_authorised_connection(url, params) do |xml|
+      connection.using_connection(url, params) do |xml|
         return ProcessVideo.new(xml).video_id
       end
     end

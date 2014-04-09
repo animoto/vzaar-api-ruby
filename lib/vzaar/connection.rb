@@ -12,19 +12,11 @@ module Vzaar
       @login = options[:login]
     end
 
-    def using_authorised_connection(url, opts={}, &block)
-      using_connection(url, opts.merge(authenticated: true), &block)
-    end
-
-    def using_public_connection(url, opts={}, &block)
-      using_connection(url, opts, &block)
-    end
-
     def using_connection(url, opts={}, &block)
       connection = opts[:authenticated] ? authorised_connection : public_connection
       response = nil
 
-      case opts[:http_verb] || Http::GET
+      case opts[:http_verb]
       when Http::GET
         response = connection.get(url)
         yield handle_response(response) if block_given?

@@ -3,7 +3,24 @@ module Vzaar
     class Base < Struct.new(:conn, :opts)
       using Vzaar
 
+      def execute
+        klass = find_response_klass
+
+        if klass
+          conn.using_connection(url, user_options) do |xml|
+            return klass.new(xml).body
+          end
+        else
+          conn.using_connection(url, user_options)
+        end
+      end
+
       protected
+
+      def find_response_klass
+        kname = self.class.name.split("::").last
+        Response.const_defined?(kname) ? Response.const_get(kname) : nil
+      end
 
       def base_url
         raise "not implemented"
@@ -22,7 +39,15 @@ module Vzaar
       end
 
       def user_options
-        { format: options[:format] }
+        { format: format, authenticated: authenticated?, http_verb: http_verb }
+      end
+
+      def authenticated?
+        options[:authenticated]
+      end
+
+      def http_verb
+        Http::GET
       end
 
       def url_params
