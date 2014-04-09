@@ -23,10 +23,9 @@ require 'pry'
 require 'httpclient'
 require 'nokogiri'
 require 'oauth'
-
 require 'vzaar/response/xml'
 require 'vzaar/connection'
-require 'vzaar/account_type'
+
 require 'vzaar/vzaar_error'
 require 'vzaar/http'
 require 'vzaar/user'
@@ -37,8 +36,13 @@ require 'vzaar/signature'
 require 'vzaar/process_video'
 require 'vzaar/s3_uploader'
 require 'vzaar/request/base'
+
 require 'vzaar/request/who_am_i'
+require 'vzaar/request/account_type'
+
 require 'vzaar/response/who_am_i'
+require 'vzaar/response/account_type'
+
 require 'vzaar/api'
 require 'vzaar/request/edit_video'
 require 'vzaar/request/process_video'

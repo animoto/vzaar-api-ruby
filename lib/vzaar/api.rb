@@ -12,10 +12,8 @@ module Vzaar
     end
 
     def account_type(account_type_id, opts={})
-      url = "/api/accounts/#{account_type_id}.xml"
-      connection.using_public_connection(url) do |xml|
-        return AccountType.new(xml)
-      end
+      _opts = opts.merge(account_type_id: account_type_id)
+      Request::AccountType.new(connection, _opts).send
     end
 
     def user_details(login, opts={})
