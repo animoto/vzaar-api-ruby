@@ -5,7 +5,7 @@ module Vzaar
 
       def execute
         klass = find_response_klass
-
+        binding.pry
         if klass
           conn.using_connection(url, user_options) do |xml|
             return klass.new(xml).body

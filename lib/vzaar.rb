@@ -27,7 +27,7 @@ require 'vzaar/connection'
 require 'vzaar/vzaar_error'
 require 'vzaar/http'
 require 'vzaar/video'
-require 'vzaar/signature'
+
 require 'vzaar/process_video'
 require 'vzaar/s3_uploader'
 require 'vzaar/request/base'
@@ -40,12 +40,14 @@ require 'vzaar/request/video_details'
 require 'vzaar/request/video_list'
 require 'vzaar/request/delete_video'
 
+
 # response
 require 'vzaar/response/who_am_i'
 require 'vzaar/response/account_type'
 require 'vzaar/response/user_details'
 require 'vzaar/response/video_details'
 require 'vzaar/response/video_list'
+require 'vzaar/response/signature'
 
 require 'vzaar/api'
 require 'vzaar/request/edit_video'

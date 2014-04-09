@@ -40,11 +40,8 @@ module Vzaar
       Request::EditVideo.new(connection, opts.merge(video_id: video_id)).execute
     end
 
-    def signature(options = {})
-      request = Request::Signature.new('/api/videos/signature', options)
-      connection.using_connection(request.url, authenticated: true, http_verb: Http::GET) do |xml|
-        return Signature.new(xml)
-      end
+    def signature(opts={})
+      Request::Signature.new(connection, opts).execute
     end
 
     def upload_video(path, options = {})
