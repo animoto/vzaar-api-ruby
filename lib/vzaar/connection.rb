@@ -23,7 +23,6 @@ module Vzaar
     def using_connection(url, opts={}, &block)
       connection = opts[:authenticated] ? authorised_connection : public_connection
       response = nil
-#      url = Vzaar::Request::Url.new(url, opts[:params]).build
 
       case opts[:http_verb] || Http::GET
       when Http::GET

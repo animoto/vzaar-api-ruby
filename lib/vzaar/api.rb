@@ -8,10 +8,7 @@ module Vzaar
     end
 
     def whoami(opts={})
-      url = '/api/test/whoami'
-      connection.using_authorised_connection(url) do |xml|
-        return WhoAmI.new(xml).login
-      end
+      Request::WhoAmI.new(connection, opts).send
     end
 
     def account_type(account_type_id, opts={})

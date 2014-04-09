@@ -12,12 +12,13 @@ module Vzaar
     def as_sym
       h = {}
       self.each_pair do |k,v|
-        h[k.to_sym] = v.is_a?(Hash) ? v.symbolize_keys : v
+        h[k.to_sym] = v.is_a?(Hash) ? v.as_sym : v
       end
       h
     end
   end
 end
+
 require 'pry'
 require 'httpclient'
 require 'nokogiri'
@@ -33,9 +34,10 @@ require 'vzaar/video'
 require 'vzaar/video_details'
 require 'vzaar/video_collection'
 require 'vzaar/signature'
-require 'vzaar/who_am_i'
 require 'vzaar/process_video'
 require 'vzaar/s3_uploader'
+require 'vzaar/request/who_am_i'
+require 'vzaar/response/who_am_i'
 require 'vzaar/api'
 require 'vzaar/request/edit_video'
 require 'vzaar/request/process_video'
