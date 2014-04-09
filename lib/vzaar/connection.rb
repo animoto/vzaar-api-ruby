@@ -22,6 +22,7 @@ module Vzaar
 
     def using_connection(url, opts={}, &block)
       connection = opts[:authenticated] ? authorised_connection : public_connection
+      response = nil
 #      url = Vzaar::Request::Url.new(url, opts[:params]).build
 
       case opts[:http_verb] || Http::GET
@@ -40,6 +41,7 @@ module Vzaar
       else
         handle_exception :invalid_http_verb
       end
+      response
     end
 
     def server
