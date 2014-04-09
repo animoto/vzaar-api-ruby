@@ -10,7 +10,7 @@ module Vzaar
       end
 
       def options
-        @options ||= opts.as_sym
+        @options ||= opts.symb_keys
       end
 
       def format

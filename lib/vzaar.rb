@@ -9,10 +9,10 @@ module Vzaar
 
   refine Hash do
 
-    def as_sym
+    def symb_keys
       h = {}
       self.each_pair do |k,v|
-        h[k.to_sym] = v.is_a?(Hash) ? v.as_sym : v
+        h[k.to_sym] = v.is_a?(Hash) ? v.symb_keys : v
       end
       h
     end
