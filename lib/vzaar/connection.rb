@@ -1,6 +1,6 @@
 module Vzaar
   class Connection
-    using Vzaar
+    include Vzaar::Helper
 
     SERVER = "vzaar.com".freeze
     attr_reader :application_token, :force_http, :login, :options, :server
@@ -36,7 +36,7 @@ module Vzaar
     end
 
     def server
-      @server ||= sanitized_url.blank? ? self.class::SERVER : sanitized_url
+      @server ||= blank?(sanitized_url) ? self.class::SERVER : sanitized_url
     end
 
     private

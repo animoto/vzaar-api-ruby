@@ -1,7 +1,7 @@
 module Vzaar
   module Request
     class Base < Struct.new(:conn, :opts)
-      using Vzaar
+      include Vzaar::Helper
 
       def execute
         klass = find_response_klass
@@ -26,7 +26,7 @@ module Vzaar
       end
 
       def options
-        @options ||= opts.symb_keys
+        @options ||= symb_keys(opts)
       end
 
       def format

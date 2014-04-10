@@ -1,16 +1,14 @@
 $: << File.dirname(__FILE__)
 
 module Vzaar
-  refine Object do
-    def blank?
-      self.nil? or self == ""
+  module Helper
+    def blank?(obj)
+      obj.nil? or obj == ""
     end
-  end
 
-  refine Hash do
-    def symb_keys
+    def symb_keys(hash)
       h = {}
-      self.each_pair do |k,v|
+      hash.each_pair do |k,v|
         h[k.to_sym] = v.is_a?(Hash) ? v.symb_keys : v
       end
       h
