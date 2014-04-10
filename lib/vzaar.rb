@@ -28,7 +28,7 @@ require 'vzaar/vzaar_error'
 require 'vzaar/http'
 require 'vzaar/video'
 
-require 'vzaar/process_video'
+
 require 'vzaar/s3_uploader'
 require 'vzaar/request/base'
 
@@ -48,6 +48,7 @@ require 'vzaar/response/user_details'
 require 'vzaar/response/video_details'
 require 'vzaar/response/video_list'
 require 'vzaar/response/signature'
+require 'vzaar/response/process_video'
 
 require 'vzaar/api'
 require 'vzaar/request/edit_video'

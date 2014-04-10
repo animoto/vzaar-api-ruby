@@ -53,14 +53,8 @@ module Vzaar
       end
     end
 
-    def process_video(options = {})
-      url = '/api/videos'
-      request = Request::ProcessVideo.new(options)
-      params = { http_verb: Http::POST, data: request.xml, authenticated: true }
-
-      connection.using_connection(url, params) do |xml|
-        return ProcessVideo.new(xml).video_id
-      end
+    def process_video(opts={})
+      Request::ProcessVideo.new(connection, opts).execute
     end
 
     private
