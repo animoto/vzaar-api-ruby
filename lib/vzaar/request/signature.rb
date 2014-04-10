@@ -17,12 +17,18 @@ module Vzaar
       end
 
       def url_params
-        keys = [:success_action_redirect, :include_metadata, :flash_request]
-        keys.inject({}) do |h,k|
-          v = options[k]
-          h[k] = v if v
-          h
+        # JC: refactor it
+        _params = {}
+        if options[:success_action_redirect]
+          _params[:success_action_redirect] = options[:success_action_redirect]
         end
+        if options[:include_metadata]
+          _params[:include_metadata] = 'yes'
+        end
+        if options[:flash_request]
+          _params[:flash_request] = 'yes'
+        end
+        _params
       end
     end
   end
