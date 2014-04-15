@@ -1,11 +1,13 @@
 module Vzaar
   module Uploaders
     class Link < Struct.new(:conn, :signature_hash, :opts)
+      LIMIT = 25
+
       def upload
         success = false
         Request::LinkUpload.new(conn, upload_params).execute
 
-        20.times do
+        LIMIT.times do
           puts "checking upload status..."
           sleep 4
           if file_ready?
