@@ -7,20 +7,15 @@ module Vzaar
 
     def upload
       begin
-        (link_upload? ? link : s3).upload
-        yield(self) if block_given?
+        success = (link_upload? ? link : s3).upload
+        yield(self) if block_given? && success
       rescue Exception => e
         VzaarError.generate :unknown, e.message
       end
     end
 
     def processing_params
-      { :guid => guid,
-        :title => opts[:title],
-        :description => opts[:description],
-        :profile => opts[:profile],
-        :transcoding => opts[:transcoding]
-      }
+      opts.merge guid: guid
     end
 
     private

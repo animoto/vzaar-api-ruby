@@ -50,18 +50,15 @@ module Vzaar
       Request::ProcessVideo.new(conn, opts).execute
     end
 
-    def link_upload(opts={})
-      _opts = signature_hash(opts).merge({
-        guid: sig_hash[:guid], key: sig_hash[:key]})
-
+    def link_upload(url, opts={})
+      sh = signature_hash(opts)
+      _opts = opts.merge({ guid: sh[:guid], key: sh[:key], url: url })
       Request::LinkUpload.new(conn, _opts).execute
     end
 
     def upload_video(opts={})
       uploader = Uploader.new(conn, signature_hash(opts), opts)
-      uploader.upload do |u|
-        process_video(u.processing_params)
-      end
+      uploader.upload { |u| process_video(u.processing_params) }
     end
   end
 end

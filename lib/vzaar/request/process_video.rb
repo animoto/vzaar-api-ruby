@@ -11,8 +11,7 @@ module Vzaar
         nil
       end
 
-
-      def data
+      def xml_data
         request_xml = %{
           <?xml version="1.0" encoding="UTF-8"?>
           <vzaar-api>
