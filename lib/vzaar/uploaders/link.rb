@@ -10,18 +10,27 @@ module Vzaar
         LIMIT.times do
           puts "checking upload status..."
           sleep 4
-          if file_ready?
+          res = check_file_upload
+
+          case res[:status]
+          when "finished"
             success = true
             puts "sending video to processing queue..."
             break
+          when "failure"
+            success = false
+            puts "file upload failed :-("
+            break
+          else
+            puts "file upload in progress... #{res[:progress]}"
           end
+
         end
         success
       end
 
-      def file_ready?
-        res = Request::UploadStatus.new(conn, upload_status_params).execute
-        res[:status] == "finished"
+      def check_file_uplaod
+        Request::UploadStatus.new(conn, upload_status_params).execute
       end
 
       def upload_status_params
