@@ -1,20 +1,24 @@
 module Vzaar
   module Uploaders
     class Link < Struct.new(:conn, :signature_hash, :opts)
-      LIMIT = 25
 
       def upload
         success = false
+        progress = 0
+        @timeout = nil
+
         Request::LinkUpload.new(conn, upload_params).execute
 
-        LIMIT.times do
-          puts "checking upload status..."
-          sleep 4
-          res = check_file_upload
+        while 1
+          res = get_upload_status
+          fsize = res[:filesize].to_i
+
+          set_timeout!(fsize) if fsize > 0
 
           case res[:status]
           when "finished"
             success = true
+            puts "upload completed"
             puts "sending video to processing queue..."
             break
           when "failure"
@@ -22,22 +26,35 @@ module Vzaar
             puts "file upload failed :-("
             break
           else
-            puts "file upload in progress... #{res[:progress]}"
+            if progress < 100
+              progress = res[:progress].to_i
+              puts "file upload in progress... #{progress}%"
+            end
           end
+
+          sleep @timeout || 10
 
         end
         success
       end
 
-      def check_file_uplaod
+      private
+
+      def set_timeout!(fsize)
+        @timeout ||= case
+                     when fsize < 10000000 then 10
+                     when fsize < 100000000 then 30
+                     when fsize < 1000000000 then 60
+                     else 120; end
+      end
+
+      def get_upload_status
         Request::UploadStatus.new(conn, upload_status_params).execute
       end
 
       def upload_status_params
         @upload_status_params ||= { guid: guid, format: :json, l: opts[:l] }
       end
-
-      private
 
       def guid
         signature_hash[:guid]
