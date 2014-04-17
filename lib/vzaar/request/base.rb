@@ -38,10 +38,6 @@ module Vzaar
         @format ||= (options[:format] || :xml).to_sym
       end
 
-      def format_suffix
-        format
-      end
-
       def url
         Url.new(endpoint, format_suffix, url_params).build
       end
