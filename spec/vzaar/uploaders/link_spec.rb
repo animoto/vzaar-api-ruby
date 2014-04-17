@@ -5,7 +5,7 @@ module Vzaar
     describe Link do
       let(:conn) { double }
       let(:signature_hash) { double }
-      let(:opts) { double }
+      let(:opts) { {} }
 
       subject { described_class.new(conn, signature_hash, opts) }
 

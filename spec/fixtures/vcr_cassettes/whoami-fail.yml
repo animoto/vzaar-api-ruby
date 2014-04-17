@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://vzaar.com/api/test/whoami
+    uri: https://vzaar.com/api/test/whoami.xml
     body:
       encoding: US-ASCII
       string: ''
