@@ -1,6 +1,7 @@
 module Vzaar
   module Uploaders
     class Link < Struct.new(:conn, :signature_hash, :opts)
+      include Vzaar::Helper
 
       def upload
         success = false
@@ -53,7 +54,7 @@ module Vzaar
       end
 
       def get_upload_status
-        Request::UploadStatus.new(conn, upload_status_params).execute
+        symb_keys(Request::UploadStatus.new(conn, upload_status_params).execute)
       end
 
       def upload_status_params
