@@ -18,17 +18,17 @@ module Vzaar
           case res[:status]
           when "finished"
             success = true
-            puts "upload completed"
-            puts "sending video to processing queue..."
+            print_msg "upload completed"
+            print_msg "sending video to processing queue..."
             break
           when "failure"
             success = false
-            puts "file upload failed :-("
+            print_msg "file upload failed :-("
             break
           else
             if progress < 100
               progress = res[:progress].to_i
-              puts "file upload in progress... #{progress}%"
+              print_msg "file upload in progress... #{progress}%"
             end
           end
 
@@ -39,6 +39,10 @@ module Vzaar
       end
 
       private
+
+      def print_msg(msg)
+        puts(msg) if opts[:verbose]
+      end
 
       def set_timeout!(fsize)
         @timeout ||= case
