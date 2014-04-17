@@ -39,7 +39,7 @@ module Vzaar
       end
 
       def url
-        Url.new(endpoint, format_suffix, url_params).build
+        Url.new(endpoint, format, url_params).build
       end
 
       def user_options
