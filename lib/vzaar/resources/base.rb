@@ -53,10 +53,6 @@ module Vzaar
         val
       end
 
-      def attributes
-        @attributes ||= []
-      end
-
       def set_api_version!(root_node)
         @api_version ||= extract_text(root_node + "/version").to_f
       end
