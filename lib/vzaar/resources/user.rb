@@ -1,16 +1,17 @@
 module Vzaar
   module Resource
     class User < Base
-      attributes( :user,
+      root_node "//user"
 
-                  { field: :created_at, type: :datetime },
-                  { field: :author_account, as: :account_type_id },
-                  { field: :max_file_size, type: :integer },
-                  { field: :author_account_title, as: :account_type_name },
-                  { field: :author_name, as: :name },
-                  { field: :author_url, as: :url },
-                  { field: :author_id, as: :id, type: :integer },
-                  { field: :video_count, as: :video_count, type: :integer })
+      attribute :created_at, type: Time
+      attribute :max_file_size, type: Integer
+      attribute :account_type_id, field: :author_account, type: Integer
+      attribute :account_type_name, field: :author_account_title
+      attribute :name, field: :author_name
+      attribute :url, field: :author_url
+      attribute :id, field: :author_id, type: Integer
+      attribute :video_count, type: Integer
+      attribute :play_count, type: Integer
     end
   end
 end

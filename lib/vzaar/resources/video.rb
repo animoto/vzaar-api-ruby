@@ -1,23 +1,30 @@
 module Vzaar
   module Resource
     class Video < Base
-      attributes( :oembed, :type, :title, :html, :description, :provider_name,
-                  :provider_url, :thumbnail_url, :framegrab_url,
+      root_node "//oembed"
 
-                  { field: :author_name, as: :user_name },
-                  { field: :author_url, as: :user_url },
-                  { field: :video_url, as: :url },
-                  { field: :author_account, as: :user_account },
-                  { field: :width, type: :integer },
-                  { field: :height, type: :integer },
-                  { field: :thumbnail_width, type: :integer },
-                  { field: :thumbnail_height, type: :integer },
-                  { field: :framegrab_width, type: :integer },
-                  { field: :framegrab_height, type: :integer },
-                  { field: :duration, type: :integer },
-                  { field: :play_count, type: :integer },
-                  { field: :video_status_id, type: :integer, as: :status_id },
-                  { field: :video_status_description, as: :status_description })
+      attribute :type
+      attribute :title
+      attribute :html
+      attribute :description
+      attribute :provider_name
+      attribute :provider_url
+      attribute :thumbnail_url
+      attribute :framegrab_url
+      attribute :user_name, field: :author_name
+      attribute :user_url, field: :author_url
+      attribute :url, field: :video_url
+      attribute :user_account, field: :author_account
+      attribute :width, type: Integer
+      attribute :height, type: Integer
+      attribute :thumbnail_width, type: Integer
+      attribute :thumbnail_height, type: Integer
+      attribute :framegrab_height, type: Integer
+      attribute :framegrab_width, type: Integer
+      attribute :duration, type: Integer
+      attribute :play_count, type: Integer
+      attribute :status_id, field: :video_status_id, type: Integer
+      attribute :status_description, field: :video_status_description
     end
   end
 end

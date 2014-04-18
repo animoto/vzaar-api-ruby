@@ -33,8 +33,9 @@ require 'vzaar/request/base'
 
 require 'vzaar/resources/base'
 require 'vzaar/resources/account_type'
-require 'vzaar/resources/user'
-require 'vzaar/resources/video'
+#require 'vzaar/resources/user'
+#require 'vzaar/resources/video'
+#require 'vzaar/resources/video_collection'
 
 
 # request

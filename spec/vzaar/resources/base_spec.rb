@@ -17,7 +17,7 @@ module Vzaar::Resource
 
     subject { Vzaar::Resource::AccountType.new(xml) }
 
-    its(:version) { should eq(version) }
+    its(:api_version) { should eq(version) }
     its(:id) { should eq(account_id) }
     its(:title) { should eq(title) }
     its(:monthly) { should eq(monthly) }
