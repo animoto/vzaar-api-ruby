@@ -12,6 +12,15 @@ module Vzaar
       attribute :id, field: :author_id, type: Integer
       attribute :video_count, type: Integer
       attribute :play_count, type: Integer
+      attribute :videos_total_size, type: Integer
+      attribute :bandwidth_this_month, type: Integer
+
+      def bandwidth
+        @bandwidth ||= doc.xpath("//bandwidth/period").map do |e|
+          attrs = e.attributes
+          { year: attrs["year"].text, month: attrs["month"].text, value: e.text.to_i }
+        end
+      end
     end
   end
 end
