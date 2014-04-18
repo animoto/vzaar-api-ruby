@@ -58,7 +58,7 @@ module Vzaar
       end
 
       def set_api_version!(root_node)
-        @api_version ||= doc.at_xpath(root_node + "/version").text.to_f
+        @api_version ||= extract_text(root_node + "/version").to_f
       end
 
       def extract_value(node, field_name)

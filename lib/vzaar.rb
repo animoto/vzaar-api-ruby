@@ -37,6 +37,7 @@ require 'vzaar/resources/user'
 require 'vzaar/resources/video'
 require 'vzaar/resources/video_collection_item'
 require 'vzaar/resources/video_collection'
+require 'vzaar/resources/signature'
 
 
 # request
