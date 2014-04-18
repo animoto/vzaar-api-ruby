@@ -3,7 +3,7 @@ module Vzaar
     class EditVideo < Video
       authenticated true
       http_verb Http::PUT
-      resource :video
+      resource "ProcessedVideo"
 
       def xml_body
         <<-XML
