@@ -8,7 +8,7 @@ module Vzaar
       attribute :status_id, type: Integer
       attribute :title
       attribute :description
-      attribute :create_at, type: Time
+      attribute :created_at, type: Time
       attribute :url
       attribute :play_count, type: Integer
       attribute :user_name, field: :author_name, node: :user
