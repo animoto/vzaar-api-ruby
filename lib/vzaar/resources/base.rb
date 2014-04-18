@@ -1,7 +1,7 @@
 module Vzaar
   module Resource
     class Base
-      attr_reader :response_body, :attributes
+      attr_reader :response_body, :attributes, :api_version
 
       class << self
         def attributes(*attrs)
@@ -33,6 +33,9 @@ module Vzaar
             end
 
             self.instance_variable_set(:"@attributes", attributes)
+
+            api_version = extract_value(doc, node, "/version")
+            self.instance_variable_set(:"@api_version", api_version.to_f)
           end
         end
 

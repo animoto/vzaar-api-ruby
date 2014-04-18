@@ -1,10 +1,8 @@
 module Vzaar
   module Resource
     class AccountType < Base
-      attributes( :account,
-                  :title,
+      attributes( :account, :title,
 
-                  { field: :version, type: :fixnum },
                   { field: :bandwidth, type: :integer },
                   { field: :account_id, as: :id, type: :integer },
                   { field: :monthly, node: "cost", type: :integer },

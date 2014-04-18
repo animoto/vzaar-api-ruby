@@ -2,7 +2,7 @@ module Vzaar
   module Request
     class UserDetails < Base
       endpoint { |o| "/api/users/#{o.login}" }
-      resource "User"
+      resource :user
 
       def login
         options[:login]

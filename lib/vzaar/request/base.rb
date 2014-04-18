@@ -35,7 +35,8 @@ module Vzaar
       attr_reader :xml_body, :json_body
 
       def resource_klass
-        Resource.const_get(resource)
+        name = resource.is_a?(Symbol) ? resource.to_s.capitalize : resource
+        Resource.const_get(name)
       end
 
       def options
