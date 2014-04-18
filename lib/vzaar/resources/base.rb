@@ -43,6 +43,8 @@ module Vzaar
                   value =~ /^true$/i ? true : false
                 when :fixnum
                   value.to_f
+                when :datetime
+                  Time.parse(value).utc
                 else
                   value
                 end
