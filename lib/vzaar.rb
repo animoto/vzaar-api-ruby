@@ -29,6 +29,12 @@ require 'vzaar/http'
 require 'vzaar/signature_extractor'
 require 'vzaar/request/base'
 
+# resources
+
+require 'vzaar/resources/base'
+require 'vzaar/resources/account_type'
+
+
 # request
 require 'vzaar/request/video'
 require 'vzaar/request/who_am_i'
