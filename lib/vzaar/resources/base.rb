@@ -1,6 +1,7 @@
 module Vzaar
   module Resource
     class Base
+
       attr_reader :response_body, :api_version, :doc
 
       class << self
@@ -17,7 +18,7 @@ module Vzaar
 
         def attribute(name, opts={})
           field_name = (opts[:field] || name).to_s
-          data_type = opts[:type] || :string
+          data_type = opts[:type] || String
           node = opts[:node]
 
           define_method(name) do
@@ -37,13 +38,13 @@ module Vzaar
       protected
 
       def set_value!(name, value, type=nil)
-        val = case type
-              when :integer then value.to_i
-              when :boolean
+        val = case type.to_s
+              when 'Integer' then value.to_i
+              when 'Vzaar::Resource::Boolean'
                 value =~ /^true$/i ? true : false
-              when :fixnum
+              when 'Fixnum'
                 value.to_f
-              when :datetime
+              when 'Time'
                 Time.parse(value).utc
               else
                 value
@@ -74,5 +75,7 @@ module Vzaar
       end
 
     end
+
+    class Boolean; end
   end
 end

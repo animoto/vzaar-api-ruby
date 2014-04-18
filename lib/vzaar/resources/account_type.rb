@@ -4,12 +4,12 @@ module Vzaar
       root_node "//account"
 
       attribute :title
-      attribute :id, type: :integer, field: :account_id
-      attribute :monthly, type: :integer, node: "cost"
+      attribute :id, field: :account_id, type: Integer
+      attribute :monthly, node: "cost", type: Integer
       attribute :currency, node: "cost"
-      attribute :borderless, node: "rights", type: :boolean
-      attribute :bandwidth, type: :integer
-      attribute :search_enhancer, node: "rights", type: :boolean, field: :searchEnhancer
+      attribute :borderless, node: "rights", type: Boolean
+      attribute :bandwidth, type: Integer
+      attribute :search_enhancer, node: "rights", field: :searchEnhancer, type: Boolean
 
     end
   end

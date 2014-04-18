@@ -24,5 +24,6 @@ module Vzaar::Resource
     its(:currency) { should eq(currency) }
     its(:bandwidth) { should eq(bandwidth) }
     its(:search_enhancer) { should eq(search_enhancer) }
+    its(:borderless) { should eq(borderless) }
   end
 end
