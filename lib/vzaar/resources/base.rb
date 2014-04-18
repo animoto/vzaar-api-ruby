@@ -21,13 +21,15 @@ module Vzaar
           node = opts[:node]
 
           define_method(name) do
-            unless instance_variable_get(:"@#{name.to_s}")
+            val = instance_variable_get(:"@#{name.to_s}")
+            unless val
               root_node = instance_variable_get(:@root_node)
               _node = node ? (root_node + "/" + node.to_s) : root_node
 
               value = extract_value(_node, field_name)
-              set_value!(name, value, data_type)
+              return set_value!(name, value, data_type)
             end
+            val
           end
         end
       end
