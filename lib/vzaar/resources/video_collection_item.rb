@@ -18,7 +18,7 @@ module Vzaar
       attribute :duration, type: Integer
       attribute :height, type: Integer
       attribute :width, type: Integer
-      attribute :thumbnail_url,
+      attribute :thumbnail_url
       attribute :total_size, type: Integer
     end
   end

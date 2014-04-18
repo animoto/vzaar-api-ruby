@@ -1,8 +1,7 @@
 module Vzaar
   module Resource
     class Base
-
-      attr_reader :response_body, :api_version, :doc
+      attr_reader :api_version, :doc
 
       class << self
         def root_node(node)
