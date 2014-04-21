@@ -8,10 +8,10 @@ module Vzaar
       private
 
       def params
-        { guid: signature_hash[:guid],
-          key: signature_hash[:key],
-          format: opts[:format],
-          url: path }
+        { :guid => signature_hash[:guid],
+          :key => signature_hash[:key],
+          :format => opts[:format],
+          :url => path }
       end
     end
   end

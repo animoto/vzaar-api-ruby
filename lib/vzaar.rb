@@ -16,7 +16,6 @@ module Vzaar
   end
 end
 
-require 'pry'
 require 'httpclient'
 require 'nokogiri'
 require 'oauth'

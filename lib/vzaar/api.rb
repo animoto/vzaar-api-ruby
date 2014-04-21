@@ -7,32 +7,32 @@ module Vzaar
     end
 
     def account_type(account_type_id, opts={})
-      _opts = opts.merge(account_type_id: account_type_id)
+      _opts = opts.merge(:account_type_id => account_type_id)
       Request::AccountType.new(conn, _opts).execute
     end
 
     def user_details(login, opts={})
-      Request::UserDetails.new(conn, opts.merge(login: login)).execute
+      Request::UserDetails.new(conn, opts.merge(:login => login)).execute
     end
 
     def video_details(video_id, opts={})
-      Request::Video.new(conn, opts.merge(video_id: video_id)).execute
+      Request::Video.new(conn, opts.merge(:video_id =>video_id)).execute
     end
 
     def video_list(login, opts={})
-      Request::VideoList.new(conn, opts.merge(login: login)).execute
+      Request::VideoList.new(conn, opts.merge(:login => login)).execute
     end
 
     def videos(opts={})
-      video_list(conn.login, { authenticated: true, page: opts[:page] })
+      video_list(conn.login, { :authenticated => true, :page => opts[:page] })
     end
 
     def delete_video(video_id, opts={})
-      Request::DeleteVideo.new(conn, opts.merge(video_id: video_id)).execute
+      Request::DeleteVideo.new(conn, opts.merge(:video_id => video_id)).execute
     end
 
     def edit_video(video_id, opts={})
-      Request::EditVideo.new(conn, opts.merge(video_id: video_id)).execute
+      Request::EditVideo.new(conn, opts.merge(:video_id => video_id)).execute
     end
 
     def signature(opts={})

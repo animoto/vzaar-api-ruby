@@ -56,10 +56,10 @@ module Vzaar
       end
 
       def user_options
-        { format: format,
-          authenticated: authenticated,
-          http_verb: http_verb,
-          data: data
+        { :format => format,
+          :authenticated => authenticated,
+          :http_verb => http_verb,
+          :data => data
         }
       end
 
@@ -70,7 +70,7 @@ module Vzaar
       # JC: login params is used only for localhost testing
       def url_params
         unless blank?(options[:l])
-          { login: options[:l] }
+          { :login => options[:l] }
         else
           {}
         end
