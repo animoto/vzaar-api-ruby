@@ -3,7 +3,7 @@ module Vzaar
     include Vzaar::Helper
 
     def extract
-      _format == :xml ? from_xml : data
+      _format == :xml ? from_xml : symb_keys(data)
     end
 
     private
