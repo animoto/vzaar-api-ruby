@@ -5,8 +5,8 @@ module Vzaar
 
       attribute :guid
       attribute :status
-      attribute :progress, type: Integer
-      attribute :filesize, type: Integer
+      attribute :progress, :type => Integer
+      attribute :filesize, :type => Integer
     end
   end
 end

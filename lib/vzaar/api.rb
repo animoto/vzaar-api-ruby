@@ -44,7 +44,7 @@ module Vzaar
     end
 
     def upload_status(guid, opts={})
-      _opts = opts.merge(guid: guid, authenticated: true)
+      _opts = opts.merge(:guid => guid, :authenticated => true)
       Request::UploadStatus.new(conn, _opts).execute
     end
 
@@ -57,7 +57,7 @@ module Vzaar
 
     def link_upload(url, opts={})
       sig = signature
-      _opts = opts.merge({ guid: sig.guid, key: sig.key, url: url })
+      _opts = opts.merge({ :guid => sig.guid, :key => sig.key, :url => url })
       Request::LinkUpload.new(conn, _opts).execute
     end
   end

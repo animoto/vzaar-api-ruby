@@ -8,11 +8,11 @@ module Vzaar
 
       def json_body
         h = {
-          vzaar_api: {
-            link_upload: {
-              key: options[:key],
-              guid: options[:guid],
-              url: options[:url]
+          :vzaar_api => {
+            :link_upload => {
+              :key => options[:key],
+              :guid => options[:guid],
+              :url => options[:url]
             }
           }
         }
