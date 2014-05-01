@@ -56,10 +56,10 @@ module Vzaar
       end
 
       def user_options
-        { format: format,
-          authenticated: authenticated,
-          http_verb: http_verb,
-          data: data
+        { :format => format,
+          :authenticated => authenticated,
+          :http_verb => http_verb,
+          :data => data
         }
       end
 
@@ -70,7 +70,7 @@ module Vzaar
       # JC: vzaar_dev_login param is used only for localhost testing
       def url_params
         unless ENV["RUBY_ENV"] == "test"
-          { vzaar_dev_login: options[:l] || ENV["VZAAR_DEV_LOGIN"] }
+          { :vzaar_dev_login => options[:l] || ENV["VZAAR_DEV_LOGIN"] }
         else
           {}
         end

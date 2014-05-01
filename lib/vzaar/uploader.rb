@@ -1,4 +1,4 @@
-require_relative "uploaders/s3"
+require "vzaar/uploaders/s3"
 
 module Vzaar
   class Uploader < Struct.new(:conn, :signature, :opts)
@@ -18,7 +18,7 @@ module Vzaar
     end
 
     def processing_params
-      opts.merge guid: guid
+      opts.merge :guid => guid
     end
 
     private
@@ -36,7 +36,7 @@ module Vzaar
     end
 
     def link
-      _opts = opts.merge({ guid: guid, key: signature.key })
+      _opts = opts.merge({ :guid => guid, :key => signature.key })
       Request::LinkUpload.new(conn, _opts).execute
     end
   end
