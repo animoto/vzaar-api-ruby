@@ -6,6 +6,8 @@ module Vzaar
         case response.code
         when Http::OK
           response
+        when Http::ERROR
+          response
         when Http::CREATED
           response
         when Http::NOT_AUTHORISED
@@ -18,7 +20,7 @@ module Vzaar
       end
 
       def self.handle_exception(type, custom_message = '')
-        VzaarError.generate type, custom_message
+        Vzaar::Error.generate type, custom_message
       end
 
     end
