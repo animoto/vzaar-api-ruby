@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(spec)/})
   s.require_paths = ['lib']
 
-  s.add_dependency 'nokogiri', '~> 1.5.2'
+  s.add_dependency 'nokogiri', '~> 1.6.0'
   s.add_dependency 'httpclient', '~> 2.3'
   s.add_dependency 'oauth', '~> 0.4'
 
