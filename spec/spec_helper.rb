@@ -7,6 +7,7 @@
 
 require 'vzaar'
 require 'vcr'
+require 'rspec/its'
 
 Dir["./spec/support/**/*.rb"].each { |f| require f }
 
